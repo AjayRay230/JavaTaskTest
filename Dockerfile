@@ -3,15 +3,16 @@ FROM eclipse-temurin:17-jdk-alpine AS build
 
 WORKDIR /app
 
-# Copy Maven wrapper and pom
 COPY mvnw mvnw
 COPY .mvn .mvn
 COPY pom.xml pom.xml
 
-# Download dependencies (cached layer)
+# FIX: make mvnw executable
+RUN chmod +x mvnw
+
+# Cache dependencies
 RUN ./mvnw dependency:go-offline
 
-# Copy source code
 COPY src src
 
 # Build the application
@@ -23,7 +24,6 @@ FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
-# Copy only the built jar from build stage
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
