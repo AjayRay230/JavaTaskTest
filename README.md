@@ -1,11 +1,4 @@
-Got it 👍
-You want the **GitHub-ready `README.md` (pure Markdown)** that renders cleanly on GitHub.
 
-Below is **exactly what you should paste into `README.md`** in your repo — no extra formatting, no explanations.
-
----
-
-```md
 # Java Task – Simple Item Management REST API
 
 A simple Spring Boot backend application that implements a RESTful API for managing items using **in-memory storage**.  
